@@ -32,11 +32,22 @@
         android:layout_height="wrap_content"
         android:text="Check" />
 
+    <TextView
+        android:id="@+id/inform"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Opcja zaznaczona"
+        android:visibility="gone"
+        android:textSize="18sp" />
+
     <Switch android:id="@+id/switcher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="switch" />
 
 </LinearLayout>
+
+
+
 
 
