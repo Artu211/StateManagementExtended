@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewCount;
     private int count =0;
     private Switch switcher;
+    private TextView textViewOpcjaZaznaczona;
+    private CheckBox checkbox;
     private LinearLayout main;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,24 @@ public class MainActivity extends AppCompatActivity {
                 main.setBackgroundColor(Color.WHITE);
             }
         });
+
+        checkbox = findViewById(R.id.check);
+        textViewOpcjaZaznaczona = findViewById(R.id.inform);
+
+        // Nasłuchuj zmiany stanu CheckBoxa
+        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // Jeśli zaznaczony, pokaż TextView
+                    textViewOpcjaZaznaczona.setVisibility(View.VISIBLE);
+                } else {
+                    // Jeśli odznaczony, ukryj TextView
+                    textViewOpcjaZaznaczona.setVisibility(View.GONE);
+                }
+            }
+        });
+
     }
     @Override
     protected  void onSaveInstanceState(Bundle outState){
