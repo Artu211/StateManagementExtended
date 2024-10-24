@@ -45,10 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        // Ustawienie słuchacza zmiany stanu
+
         switcher = findViewById(R.id.switcher);
         main = findViewById(R.id.main_layout);
         input = findViewById(R.id.input);
+        // Ustawienie słuchacza zmiany stanu i gdy przełączymy to wykona się ten kod i zrobi nam wszystko pod tryb ciemny
         switcher.setOnCheckedChangeListener((buttonView, isChecked) -> {if (isChecked) {
             main.setBackgroundColor(Color.BLACK);
             textViewCount.setTextColor(Color.WHITE);
