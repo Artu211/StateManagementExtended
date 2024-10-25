@@ -17,8 +17,14 @@ import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
     private static final String KEY_COUNT = "count";
+    private static final String KEY_INPUT = "input1";
+    private static final String KEY_CHECK = "check1";
+    private static final String KEY_SWITCH = "switch1";
     private TextView textViewCount;
     private int count =0;
+    private String input2;
+    private Boolean check2;
+    private Boolean switch2;
     private Switch switcher;
     private EditText input;
     private TextView textViewOpcjaZaznaczona;
@@ -33,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         Button buttonIncrement = findViewById(R.id.button);
         if(savedInstanceState !=null){
             count = savedInstanceState.getInt(KEY_COUNT);
+            input2 = savedInstanceState.getString(KEY_INPUT);
+            check2 = savedInstanceState.getBoolean(KEY_CHECK);
+            switch2 = savedInstanceState.getBoolean(KEY_SWITCH);
         }
         updateCountText();
 
@@ -98,6 +107,9 @@ public class MainActivity extends AppCompatActivity {
     protected  void onSaveInstanceState(Bundle outState){
         super.onSaveInstanceState(outState);
         outState.putInt(KEY_COUNT, count);
+        outState.putString(KEY_INPUT, input2);
+        outState.putBoolean(KEY_CHECK, check2);
+        outState.putBoolean(KEY_SWITCH, switch2);
     }
     protected void updateCountText(){
         textViewCount.setText("Licznik: "+ count);
