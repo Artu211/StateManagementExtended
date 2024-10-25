@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         switcher = findViewById(R.id.switcher);
         main = findViewById(R.id.main_layout);
         input = findViewById(R.id.input);
+            buttonIncrement.setBackgroundColor(Color.BLUE);
         // Ustawienie słuchacza zmiany stanu i gdy przełączymy to wykona się ten kod i zrobi nam wszystko pod tryb ciemny
         switcher.setOnCheckedChangeListener((buttonView, isChecked) -> {if (isChecked) {
             main.setBackgroundColor(Color.BLACK);
@@ -69,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
             input.setTextColor(Color.BLACK);
             checkbox.setTextColor(Color.BLACK);
             textViewOpcjaZaznaczona.setTextColor(Color.BLACK);
+            buttonIncrement.setTextColor(Color.WHITE);
+            buttonIncrement.setBackgroundColor(Color.BLUE);
             switcher.setTextColor(Color.BLACK);
         }
         });
