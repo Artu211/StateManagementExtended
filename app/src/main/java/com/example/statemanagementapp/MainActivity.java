@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String KEY_COUNT = "count";
     private static final String KEY_INPUT = "input1";
     private static final String KEY_CHECK = "check1";
+    private static final String KEY_TEXT_VISIBLE = "textVisible";
     private static final String KEY_SWITCH = "switch1";
     private static final String KEY_DARK_MODE = "darkMode";
 
@@ -43,17 +44,22 @@ public class MainActivity extends AppCompatActivity {
         checkbox = findViewById(R.id.check);
         textViewOpcjaZaznaczona = findViewById(R.id.inform);
 
-        // Przywracanie stanów po obrocie ekranu
+        // Przywracanie stanów po obrocie ekranu aplikacji
         if (savedInstanceState != null) {
             count = savedInstanceState.getInt(KEY_COUNT);
             input.setText(savedInstanceState.getString(KEY_INPUT));
             checkbox.setChecked(savedInstanceState.getBoolean(KEY_CHECK));
             switcher.setChecked(savedInstanceState.getBoolean(KEY_SWITCH));
             isDarkMode = savedInstanceState.getBoolean(KEY_DARK_MODE, false);
+
+            // Przywracanie widoczności textViewOpcjaZaznaczona
+            boolean isTextVisible = savedInstanceState.getBoolean(KEY_TEXT_VISIBLE, false);
+            textViewOpcjaZaznaczona.setVisibility(isTextVisible ? View.VISIBLE : View.GONE);
         }
         updateCountText();
-        applyTheme(); 
+        applyTheme();
 
+        // Słuchacz dla guzika gdy go się kliknie zwiększa się count
         buttonIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putInt(KEY_COUNT, count);
         outState.putString(KEY_INPUT, input.getText().toString());
         outState.putBoolean(KEY_CHECK, checkbox.isChecked());
+        outState.putBoolean(KEY_TEXT_VISIBLE, textViewOpcjaZaznaczona.getVisibility() == View.VISIBLE);
         outState.putBoolean(KEY_SWITCH, switcher.isChecked());
         outState.putBoolean(KEY_DARK_MODE, isDarkMode);
     }
