@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String KEY_INPUT = "input1";
     private static final String KEY_CHECK = "check1";
     private static final String KEY_SWITCH = "switch1";
-    private static final String KEY_DARK_MODE = "darkMode"; // Dodana stała do zapisu trybu
+    private static final String KEY_DARK_MODE = "darkMode";
 
     private TextView textViewCount;
     private int count = 0;
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox checkbox;
     private LinearLayout main;
     private Button buttonIncrement;
-    private boolean isDarkMode = false; // Flaga trybu ciemnego
+    private boolean isDarkMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         checkbox = findViewById(R.id.check);
         textViewOpcjaZaznaczona = findViewById(R.id.inform);
 
-        // Przywracanie stanów po obrocie
+        // Przywracanie stanów po obrocie ekranu
         if (savedInstanceState != null) {
             count = savedInstanceState.getInt(KEY_COUNT);
             input.setText(savedInstanceState.getString(KEY_INPUT));
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             isDarkMode = savedInstanceState.getBoolean(KEY_DARK_MODE, false);
         }
         updateCountText();
-        applyTheme();  // Ustawienia kolorów na podstawie isDarkMode
+        applyTheme(); 
 
         buttonIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Słuchacz dla przełącznika trybu ciemnego
         switcher.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            isDarkMode = isChecked;  // Aktualizacja stanu trybu
+            isDarkMode = isChecked;
             applyTheme();
         });
 
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putString(KEY_INPUT, input.getText().toString());
         outState.putBoolean(KEY_CHECK, checkbox.isChecked());
         outState.putBoolean(KEY_SWITCH, switcher.isChecked());
-        outState.putBoolean(KEY_DARK_MODE, isDarkMode);  // Zapisanie trybu ciemnego
+        outState.putBoolean(KEY_DARK_MODE, isDarkMode);
     }
 
     private void updateCountText() {
